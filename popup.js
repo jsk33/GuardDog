@@ -1,8 +1,8 @@
-const button = document.querySelector('button');
+const input = document.querySelector('input');
 
 function setCount(response) {
     const div = document.createElement('div');
-    div.textContent = `${response.count} images were doggofied :)`;
+    div.textContent = `${response.count} images doggofied :)`;
     document.body.appendChild(div);
 }
 
@@ -13,12 +13,12 @@ function handleClick() {
         })
 }
 
-function buttonFunction() {
-    button.addEventListener('click', handleClick, false);
+function inputFunction() {
+    input.addEventListener('click', handleClick, false);
 }
 
 function init() {
-    document.addEventListener('DOMContentLoaded', buttonFunction);
+    document.addEventListener('DOMContentLoaded', inputFunction);
 }
 
 init();

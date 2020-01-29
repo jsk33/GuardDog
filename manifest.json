@@ -1,10 +1,10 @@
 {
-    "name": "Doggos",
+    "name": "Doggofy",
     "version": "1.0",
     "manifest_version": 2,
-    "description": "Doggos are the new todos!",
+    "description": "Doggofy your page!",
     "browser_action": {
-        "default_title": "Doggos",
+        "default_title": "Doggofy",
         "default_popup": "popup.html"
     },
     "content_scripts": [ 
@@ -12,9 +12,5 @@
             "matches": ["<all_urls>"],
             "js": ["content.js"]
         }
-    ],
-    "background": {
-        "scripts": ["background.js"]
-    }
-        
+    ]
 }
