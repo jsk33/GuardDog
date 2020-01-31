@@ -12,5 +12,12 @@
             "matches": ["<all_urls>"],
             "js": ["scripts/content.js"]
         }
+    ],
+    "background": {
+        "scripts": ["scripts/background.js"],
+        "persistent": false
+    },
+    "permissions": [
+        "tabs"
     ]
 }

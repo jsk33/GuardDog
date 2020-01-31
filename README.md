@@ -1,4 +1,4 @@
-# DoggosChromeExtension
+# DoggofyChromeExtension
 
 ## Installation
 1. Go to chrome://extensions/
