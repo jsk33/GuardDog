@@ -1,25 +1,9 @@
-
-
-
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-        sendResponse(getWasteStatus(displayTab));
+        if (sender.url.includes("reddit")) {
+            sendResponse({status: "wasting time"});
+        } else {
+            sendResponse({status: "not wasting time"});
+        }
     }
 )
-
-function getWasteStatus(callback) {
-    chrome.tabs.query({currentWindow: true, active: true, url: "https://www.reddit.com/*"},
-        function(tab) {
-            callback(tab);
-        }
-    );
-}
-
-function displayTab(tab) {
-    console.log(tab);
-    if (tab.length !== 0) {
-        return {status: "waste"};
-    } else {
-        return {status: "not waste"};
-    }
-}
