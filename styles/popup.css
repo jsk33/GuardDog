@@ -1,0 +1,11 @@
+body {
+    background-color: blanchedalmond;
+}
+
+.form, .greeting {
+    display: none;
+}
+
+.showing {
+    display: block;
+}
