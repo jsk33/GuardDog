@@ -36,6 +36,7 @@ function loadName() {
 }
 
 function init() {
+    console.log("greeting.js initialized");
     loadName();
 }
 

@@ -1,5 +1,6 @@
 body {
     background-color: blanchedalmond;
+    min-width: 300px;
 }
 
 .form, .greeting {
@@ -8,4 +9,18 @@ body {
 
 .showing {
     display: block;
+}
+
+.dogIconDiv {
+    width: 30%;
+    float: left;
+}
+
+.greetingDiv {
+    width: 60%;
+    float: left;
+}
+
+.clearfix {
+    clear: both;
 }
