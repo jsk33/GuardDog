@@ -15,7 +15,7 @@ function handleSubmit(event) {
     event.preventDefault();
 
     const newName = greetingInput.value;
-    chrome.storage.local.set({"currentUser": newName}, function() {
+    chrome.storage.local.set({currentUser: newName}, function() {
         console.log("current user is set to: " + newName);
     });
     paintGreeting(newName);
@@ -32,7 +32,7 @@ function loadName() {
 
     getCurrentUserPromise().then(result => {
         currentUser = result;
-        currentUser === undefined ? askForName() : paintGreeting(currentUser);
+        currentUser === '' ? askForName() : paintGreeting(currentUser);
     })
 }
 

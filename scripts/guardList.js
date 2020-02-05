@@ -15,7 +15,7 @@ function saveGuardList(textArray) {
     })
 }
 
-function handleSubmit(event) {
+function handleSubmitGuardList(event) {
     event.preventDefault();
 
     const newGuardItem = guardListInput.value;
