@@ -1,4 +1,4 @@
-# DoggofyChromeExtension
+# GuardDogChromeExtension
 
 ## Installation
 1. Go to chrome://extensions/
