@@ -2,14 +2,13 @@ const greetingForm = document.querySelector(".greetingForm-js");
 const greetingInput = greetingForm.querySelector("input");
 const greetingMessage = document.querySelector(".greeting-js");
 
-const USER_CHROME_STORAGE = "currentUser";
 const SHOWING_ON = "showing";
 
-
 function paintGreeting(text) {
+    console.log("painting greeting");
     greetingForm.classList.remove(SHOWING_ON);
     greetingMessage.classList.add(SHOWING_ON);
-    greetingMessage.innerHTML = `Hey ${text}, I'm GuardDog`;
+    greetingMessage.innerText = `Hey ${text}, I'm GuardDog`;
 }
 
 function handleSubmit(event) {
@@ -23,16 +22,26 @@ function handleSubmit(event) {
 }
 
 function askForName() {
+    console.log("asking for name");
     greetingForm.classList.add(SHOWING_ON);
     greetingForm.addEventListener("submit", handleSubmit);
 }
 
 function loadName() {
     let currentUser;
-    chrome.storage.local.get("currentUser", function(result) {
-        currentUser = result.key;
-    });
-    currentUser === undefined ? askForName() : paintGreeting(currentUser);
+
+    getCurrentUserPromise().then(result => {
+        currentUser = result;
+        currentUser === undefined ? askForName() : paintGreeting(currentUser);
+    })
+}
+
+function getCurrentUserPromise() {
+    return new Promise(resolve => {
+        chrome.storage.local.get({currentUser: ''}, function(items) {
+          resolve(items.currentUser);
+        })
+    })
 }
 
 function init() {
