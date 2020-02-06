@@ -1,6 +1,7 @@
 const greetingForm = document.querySelector(".greetingForm-js");
 const greetingInput = greetingForm.querySelector("input");
 const greetingMessage = document.querySelector(".greeting-js");
+const greetingChangeUserBtn = document.querySelector(".greetingChangeUserBtn-js");
 
 const SHOWING_ON = "showing";
 
@@ -44,9 +45,16 @@ function getCurrentUserPromise() {
     })
 }
 
+function changeUserBtnOnClick(event) {
+    chrome.storage.local.clear();
+    greetingMessage.classList.remove(SHOWING_ON);
+    askForName();
+}
+
 function init() {
     console.log("greeting.js initialized");
     loadName();
+    greetingChangeUserBtn.addEventListener("click", changeUserBtnOnClick);
 }
 
 init();
