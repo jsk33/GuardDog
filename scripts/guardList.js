@@ -45,7 +45,6 @@ var guardList = {
             }
             guardList.paintGuardList(tempGuardList);
         })
-
     },
 
     loadGuardListItems: function loadGuardListItems() {
