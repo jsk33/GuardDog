@@ -7,7 +7,6 @@ const SHOWING_ON = "showing";
 
 var greeting = {
     paintGreeting: function paintGreeting(text) {
-        console.log("painting greeting");
         greetingForm.classList.remove(SHOWING_ON);
         greetingMessage.classList.add(SHOWING_ON);
         greetingMessage.innerText = `Hey ${text}, I'm GuardDog`;
@@ -24,7 +23,6 @@ var greeting = {
     },
 
     askForName: function askForName() {
-        console.log("asking for name");
         greetingForm.classList.add(SHOWING_ON);
         greetingForm.addEventListener("submit", greeting.handleSubmit);
     },
@@ -53,7 +51,6 @@ var greeting = {
     },
 
     init: function init() {
-        console.log("greeting.js initialized");
         greeting.loadName();
         greetingChangeUserBtn.addEventListener("click", greeting.changeUserBtnOnClick);
     }

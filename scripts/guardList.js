@@ -1,52 +1,72 @@
 const guardListForm = document.querySelector(".guardListForm-js");
 const guardListInput = guardListForm.querySelector("input");
-const guardListItems = document.querySelector(".guardListItems-js");
+const guardListItemList = document.querySelector(".guardListItems-js");
 
 
 var guardList = {
-    paintGuardList: function paintGuardList(textArray) {
+    paintGuardList: function paintGuardList(guardListItems) {
         // for each item in the guard list, append a li child to guardListItems
+        guardListItemList.innerHTML='';
         
+        guardListItems.forEach(value => {
+            console.log(value);
+            let listItem = document.createElement("li");
+            listItem.innerText = value;
+            guardListItemList.appendChild(listItem);
+        });
     },
 
-    saveGuardList: function saveGuardList(textArray) {
-        chrome.storage.local.set({"guardList": textArray}, function() {
-            console.log("guardList is set to: " + textArray);
-        })
+    saveGuardList: function saveGuardList(guardListItems) {
+        chrome.storage.local.set({"guardList": guardListItems});
     },
 
     handleSubmit: function handleSubmit(event) {
         event.preventDefault();
     
         const newGuardItem = guardListInput.value;
+        guardListInput.value='';
         guardList.addToGuardList(newGuardItem);
     },
 
-    addToGuardList: function addToGuardList(text) {
+    addToGuardList: function addToGuardList(newGuardItem) {
         // append the new item to the string array of guard items
-        let guardList;
+        let tempGuardList;
         
-        chrome.storage.local.get("guardList", function(result) {
-            guardList = result;
-        });
-    
-        guardList.append(text);
-        guardList.saveGuardList(guardList);
-        guardList.paintGuardList(guardList);
+        guardList.getGuardListPromise().then(result => {
+            tempGuardList = result;
+            if (tempGuardList === '') {
+                // initialize a new string array and add the new guard item to it
+                tempGuardList = [newGuardItem];
+                guardList.saveGuardList(tempGuardList);
+            } else {
+                // append the new guard item to the existing string array of guard items
+                tempGuardList.push(newGuardItem);
+                guardList.saveGuardList(tempGuardList);
+            }
+            guardList.paintGuardList(tempGuardList);
+        })
+
     },
 
     loadGuardListItems: function loadGuardListItems() {
-        let guardList;
+        let tempGuardList;
         
-        chrome.storage.local.get("guardList", function(result) {
-            guardList = result;
-        });
-    
-        guardList === undefined ? console.log("empty guard list") : guardList.paintGuardList(guardList);
+        guardList.getGuardListPromise().then(result => {
+            tempGuardList = result;
+            console.log(tempGuardList);
+            tempGuardList === '' ? console.log("empty guard list") : guardList.paintGuardList(tempGuardList);
+        })
+    },
+
+    getGuardListPromise: function getGuardListPromise() {
+        return new Promise(resolve => {
+            chrome.storage.local.get({guardList: ''}, function(items) {
+                resolve(items.guardList);
+            })
+        })
     },
 
     init: function init() {
-        console.log("guardList.js initialized");
         guardList.loadGuardListItems();
         guardListForm.addEventListener("submit", guardList.handleSubmit);
     }
