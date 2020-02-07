@@ -26,13 +26,13 @@ var greeting = {
     askForName: function askForName() {
         console.log("asking for name");
         greetingForm.classList.add(SHOWING_ON);
-        greetingForm.addEventListener("submit", handleSubmit);
+        greetingForm.addEventListener("submit", greeting.handleSubmit);
     },
 
     loadName: function loadName() {
         let currentUser;
     
-        getCurrentUserPromise().then(result => {
+        greeting.getCurrentUserPromise().then(result => {
             currentUser = result;
             currentUser === '' ? greeting.askForName() : greeting.paintGreeting(currentUser);
         })
@@ -55,8 +55,8 @@ var greeting = {
     init: function init() {
         console.log("greeting.js initialized");
         greeting.loadName();
-        greetingChangeUserBtn.addEventListener("click", changeUserBtnOnClick);
+        greetingChangeUserBtn.addEventListener("click", greeting.changeUserBtnOnClick);
     }
 }
 
-greeeting.init();
+greeting.init();

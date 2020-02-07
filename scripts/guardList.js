@@ -48,7 +48,7 @@ var guardList = {
     init: function init() {
         console.log("guardList.js initialized");
         guardList.loadGuardListItems();
-        guardListForm.addEventListener("submit", handleSubmit);
+        guardListForm.addEventListener("submit", guardList.handleSubmit);
     }
 }
 
