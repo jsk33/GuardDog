@@ -8,12 +8,27 @@ var guardList = {
         // for each item in the guard list, append a li child to guardListItems
         guardListItemList.innerHTML='';
         
-        guardListItems.forEach(value => {
-            console.log(value);
-            let listItem = document.createElement("li");
-            listItem.innerText = value;
+        guardListItems.forEach(guardObj => {
+            const listItem = document.createElement("li");
+            const deleteBtn = document.createElement("button");
+            const span = document.createElement("span");
+
+            listItem.id = guardObj.id;
+
+            deleteBtn.innerText = "❌";
+            deleteBtn.addEventListener("click", guardList.handleDelete);
+
+            span.innerText = guardObj.site + " ";
+
+            listItem.appendChild(span);
+            listItem.appendChild(deleteBtn);
+
             guardListItemList.appendChild(listItem);
         });
+    },
+
+    handleDelete: function handleDelete(event) {
+        console.log("deleting item");
     },
 
     saveGuardList: function saveGuardList(guardListItems) {
@@ -35,14 +50,25 @@ var guardList = {
         guardList.getGuardListPromise().then(result => {
             tempGuardList = result;
             if (tempGuardList === '') {
-                // initialize a new string array and add the new guard item to it
-                tempGuardList = [newGuardItem];
+                // initialize a new array and add the new guard object
+                let newId = 1;
+                let newGuardObj = {
+                    site: newGuardItem,
+                    id: newId
+                };
+                tempGuardList = [newGuardObj];
                 guardList.saveGuardList(tempGuardList);
             } else {
-                // append the new guard item to the existing string array of guard items
-                tempGuardList.push(newGuardItem);
+                // append the new guard object to the existing array of guard items
+                let newId = tempGuardList.length + 1;
+                let newGuardObj = {
+                    site: newGuardItem,
+                    id: newId
+                }
+                tempGuardList.push(newGuardObj);
                 guardList.saveGuardList(tempGuardList);
             }
+            console.log(tempGuardList);
             guardList.paintGuardList(tempGuardList);
         })
     },
