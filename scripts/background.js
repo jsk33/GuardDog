@@ -13,7 +13,7 @@ getGuardListPromise().then(result => {
 
     chrome.runtime.onMessage.addListener(
         function(request, sender, sendResponse) {
-            const temp = guardListItems.filter(value => sender.url.includes(value));
+            const temp = guardListItems.filter(value => sender.url.includes(value.site));
             console.log(guardListItems);
             console.log(temp);
             if (temp.length > 0) {
