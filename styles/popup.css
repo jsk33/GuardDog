@@ -3,7 +3,7 @@ body {
     min-width: 300px;
 }
 
-.form, .greeting {
+.form, .greeting, .grace {
     display: none;
 }
 

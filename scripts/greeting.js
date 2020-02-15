@@ -45,7 +45,7 @@ var greeting = {
     },
 
     changeUserBtnOnClick: function changeUserBtnOnClick(event) {
-        chrome.storage.local.clear();
+        chrome.storage.local.remove("currentUser");
         greetingMessage.classList.remove(SHOWING_ON);
         greeting.askForName();
     },
