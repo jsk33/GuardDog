@@ -18,9 +18,6 @@ var gracePeriod = {
                 gracePeriod.askGracePeriod();
             } else {
                 gracePeriod.paintGracePeriod(currentGracePeriod);
-                // send value to content.js where it will be used to set the doggofy interval
-
-
             }
         })
     },
@@ -57,7 +54,14 @@ var gracePeriod = {
         gracePeriodForm.classList.remove(SHOWING_ON);
         gracePeriodLabel.classList.add(SHOWING_ON);
 
-        gracePeriodLabel.innerText = `${gracePeriod.toString()} minutes allowed`;
+
+        chrome.tabs.query({currentWindow: true, active: true},
+            function (tabs) {
+                chrome.tabs.sendMessage(tabs[0].id, {gracePeriod: gracePeriod}, function(response) {
+                    gracePeriodLabel.innerText = `${response.gracePeriod} minutes allowed`;
+                });
+            }
+        )
     },
 
     handleClick: function handleClick() {

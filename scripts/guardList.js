@@ -29,6 +29,17 @@ var guardList = {
 
     handleDelete: function handleDelete(event) {
         console.log("deleting item");
+        const btn = event.target;
+        const li = btn.parentNode;
+
+        guardList.getGuardListPromise().then(result => {
+            const updatedGuardList = result.filter(function(guardListObj) {
+                return guardListObj.id !== parseInt(li.id);
+            });
+
+            guardList.saveGuardList(updatedGuardList);
+            guardList.paintGuardList(updatedGuardList);
+        })
     },
 
     saveGuardList: function saveGuardList(guardListItems) {
