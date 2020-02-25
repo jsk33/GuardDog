@@ -1,10 +1,10 @@
 {
-    "name": "Doggofy",
+    "name": "GuardDog",
     "version": "1.0",
     "manifest_version": 2,
-    "description": "Doggofy your page!",
+    "description": "Guard your time.",
     "browser_action": {
-        "default_title": "Doggofy",
+        "default_title": "GuardDog",
         "default_popup": "popup.html"
     },
     "content_scripts": [ 
