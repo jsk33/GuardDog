@@ -9,7 +9,7 @@ var greeting = {
     paintGreeting: function paintGreeting(text) {
         greetingForm.classList.remove(SHOWING_ON);
         greetingMessage.classList.add(SHOWING_ON);
-        greetingMessage.innerText = `Hey ${text}, I'm GuardDog`;
+        greetingMessage.innerText = `Hey ${text}, I'm GuardDog.`;
     },
 
     handleSubmit: function handleSubmit(event) {

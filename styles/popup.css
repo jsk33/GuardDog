@@ -11,16 +11,17 @@ body {
     display: block;
 }
 
+.center {
+    text-align: center;
+}
+
 .dogIconDiv {
-    width: 30%;
-    float: left;
 }
 
 .greetingDiv {
-    width: 60%;
-    float: left;
+    margin-bottom: 20px;
 }
 
-.clearfix {
-    clear: both;
+.inlineblock {
+    display: inline-block;
 }

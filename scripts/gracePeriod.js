@@ -58,7 +58,7 @@ var gracePeriod = {
         chrome.tabs.query({currentWindow: true, active: true},
             function (tabs) {
                 chrome.tabs.sendMessage(tabs[0].id, {gracePeriod: gracePeriod}, function(response) {
-                    gracePeriodLabel.innerText = `${response.gracePeriod} minutes allowed`;
+                    gracePeriodLabel.innerText = `${response.gracePeriod} minutes`;
                 });
             }
         )
