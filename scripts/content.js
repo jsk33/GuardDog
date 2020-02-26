@@ -1,10 +1,10 @@
+let intervalDuration;
+
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.message == "doggofy this page") {
         content.doggofy();
     } else {
-        intervalDuration = request.gracePeriod;
-        console.log(intervalDuration);
-        sendResponse({gracePeriod: intervalDuration});
+        
     }
 })
 

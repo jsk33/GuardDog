@@ -42,10 +42,7 @@ var gracePeriod = {
         event.preventDefault();
 
         const newGracePeriod = gracePeriodInput.value;
-        chrome.storage.local.set({gracePeriod: newGracePeriod}, function() {
-            console.log("current grace period is set to: " + newGracePeriod);
-        });
-
+        chrome.storage.local.set({gracePeriod: newGracePeriod});
         gracePeriod.paintGracePeriod(newGracePeriod);
     },
 
@@ -54,14 +51,8 @@ var gracePeriod = {
         gracePeriodForm.classList.remove(SHOWING_ON);
         gracePeriodLabel.classList.add(SHOWING_ON);
 
-
-        chrome.tabs.query({currentWindow: true, active: true},
-            function (tabs) {
-                chrome.tabs.sendMessage(tabs[0].id, {gracePeriod: gracePeriod}, function(response) {
-                    gracePeriodLabel.innerText = `${response.gracePeriod} minutes`;
-                });
-            }
-        )
+        // edit the label
+        gracePeriodLabel.innerText = `${gracePeriod} minutes`;
     },
 
     handleClick: function handleClick() {
