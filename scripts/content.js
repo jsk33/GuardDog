@@ -7,8 +7,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             image.removeAttribute('srcset');
             image.src = "https://www.rover.com/blog/wp-content/uploads/2019/11/shiba-dreamstime-960x540.jpg";
         });
-    
-        sendResponse({count: images.length});
     } else {
         intervalDuration = request.gracePeriod;
         console.log(intervalDuration);
