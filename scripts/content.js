@@ -1,5 +1,3 @@
-let intervalDuration;
-
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.message == "doggofy this page") {
         content.doggofy();
@@ -38,7 +36,7 @@ var content = {
         let images = document.querySelectorAll('img');
         images.forEach(function(image) {
             image.removeAttribute('srcset');
-            image.src = "https://www.rover.com/blog/wp-content/uploads/2019/11/shiba-dreamstime-960x540.jpg";
+            image.src = chrome.runtime.getURL('images/somsom.JPG');
         });
     },
 
