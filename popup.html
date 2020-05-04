@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>GuardDog</title>
         <link href="styles/popup.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Underdog&display=swap" rel="stylesheet">
     </head>
 
     <body>
@@ -14,23 +15,31 @@
         <div class="greetingDiv center">
             <div class="inlineblock">
                 <form class="greetingForm-js form">
-                    <input type="text" placeholder="What is your name?">
+                    <input type="text" placeholder="What is your name?" style="margin-top: 15px">
                 </form>
                 <h3 class="greeting-js greeting"></h3>
             </div>
             
             <div class="inlineblock" style="margin-left: 20px;">
-                <button class="greetingChangeUserBtn-js">△</button>
+                <button class="greetingChangeUserBtn-js changeBtn">△</button>
             </div>
         </div>
 
-        <form class="guardListForm-js center">
-            <input type="text" placeholder="Guard me from:">
-        </form>
-        <h3>Currently guarding you from:</h3>
-        <ul class="guardListItems-js">
-        </ul>
+        <div class="guardlist">
+            <div class="inlineblock">
+                <h3>Guard me from: </h3>
+            </div>
 
+            <div class="inlineblock">
+                <form class="guardListForm-js">
+                    <input type="text" placeholder="example: reddit">
+                </form>
+            </div>
+        </div>
+
+        <ul class="guardListItems-js" style="margin-block-start: 0em;">
+        </ul>
+        
         <div class="grace-period">
             <div class="inlineblock">
                 <h3>Grace Period: </h3>
@@ -40,16 +49,15 @@
                 <form class="gracePeriod-js form">
                     <input type="text" placeholder="minutes">
                 </form>
-                <p class="gracePeriodValue-js grace"></p>
+                <p class="gracePeriodValue-js grace center" style="margin-inline-start: 10px;"></p>
             </div>
             
             <div class="inlineblock">
-                <button class="gracePeriodBtn-js" style="margin-left: 20px;">△</button>
+                <button class="gracePeriodBtn-js changeBtn" style="margin-left: 20px;">△</button>
             </div>
         </div>
         
         
-
         <script src="scripts/guardButton.js"></script>
         <script src="scripts/greeting.js"></script>
         <script src="scripts/guardList.js"></script>

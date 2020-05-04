@@ -1,6 +1,7 @@
 body {
     background-color: blanchedalmond;
     min-width: 300px;
+    font-family: 'Underdog', cursive;
 }
 
 .form, .greeting, .grace {
@@ -24,4 +25,14 @@ body {
 
 .inlineblock {
     display: inline-block;
+}
+
+.deleteBtn {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.changeBtn {
+    cursor: pointer;
 }

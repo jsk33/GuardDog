@@ -16,6 +16,7 @@ var guardList = {
             listItem.id = guardObj.id;
 
             deleteBtn.innerText = "❌";
+            deleteBtn.className = "deleteBtn";
             deleteBtn.addEventListener("click", guardList.handleDelete);
 
             span.innerText = guardObj.site + " ";
