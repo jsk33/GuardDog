@@ -14,7 +14,7 @@ getGuardListPromise().then(result => {
     chrome.runtime.onMessage.addListener(
         function(request, sender, sendResponse) {
             // check if currently on a website that's part of the guardlist
-            const temp = guardListItems.filter(value => sender.url.includes(value.site));
+            let temp = guardListItems.filter(value => sender.url.includes(value.site));
             
             if (temp.length > 0) {
                 sendResponse({status: "wasting time"});
