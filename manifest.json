@@ -5,7 +5,8 @@
     "description": "Guard your time.",
     "browser_action": {
         "default_title": "GuardDog",
-        "default_popup": "popup.html"
+        "default_popup": "popup.html",
+        "default_icon": "images/dogIcon.png"
     },
     "content_scripts": [ 
         {
